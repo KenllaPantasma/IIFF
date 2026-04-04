@@ -1,0 +1,392 @@
+[
+  {
+    "id_obra": "25PFEO125",
+    "nombre": "Restauración hidrológico-forestal del incendio de Cuevas del Valle y San Bartolomé de Pinares (Ávila). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Cuevas del Valle, San Bartolomé de Pinares"],
+    "presupuesto": 500000.00,
+    "fecha_ini": "05/12/2025",
+    "Dir_obra": "Ángel Iglesias Ranz",
+    "trabajos": ["Mejora o creación de caminos y pistas", "Pasos de agua  obras auxiliares", "Repaso y apertura de cortafuegos"],
+    "empresa": "Tragsa"
+  },
+  {
+    "id_obra": "25PFOB102",
+    "nombre": "Restauración hidrológico-forestal en MUP 2 del incendio de Jarilla (Cáceres). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Jarilla"],
+    "presupuesto": 499994.59,
+    "fecha_ini": "17/11/2025",
+    "Dir_obra":"Enrique Santiago Balbuena Gutiérrez",
+    "trabajos": ["Corta, saca de madera y acondicionado de restos", "Control de la erosión y favorecer el regenerado: Construcción de cordones de defensa o fajinas; Construcción de albarradas; Subsolados; Apoyo a la regeneración.", "Mejora de pistas y recuperación de infraestructuras.",  "Prevención de plagas (trampas)."],
+    "empresa": "EXTREMADURA VERDE S.L."
+  },
+  {
+    "id_obra": "25PFOB103",
+    "nombre": "Restauración hidrológico-forestal en MUP 6 y 7 del incendio de Jarilla (Cáceres). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Jarilla"],
+    "presupuesto": 499997.99,
+    "fecha_ini": "10/12/2025",
+    "Dir_obra":"Enrique Santiago Balbuena Gutiérrez",
+    "trabajos": ["Corta, saca de madera y acondicionado de restos", "Control de la erosión y favorecer el regenerado: Construcción de cordones de defensa o fajinas; Construcción de albarradas; Subsolados; Apoyo a la regeneración.", "Mejora de pistas y recuperación de infraestructuras.",  "Prevención de plagas (trampas)."],
+    "empresa": "MARLE FORESTAL S.L."
+  },
+  {
+    "id_obra": "25PFOB104",
+    "nombre": "Restauración hidrológico-forestal en MUP 7 (Zona Norte) del incendio de Jarilla (CÁCERES). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Jarilla"],
+    "presupuesto": 499998.98,
+    "fecha_ini": "10/12/2025",
+    "Dir_obra":"Enrique Santiago Balbuena Gutiérrez",
+    "trabajos": ["Corta, saca de madera y acondicionado de restos", "Control de la erosión y favorecer el regenerado: Construcción de cordones de defensa o fajinas; Construcción de albarradas; Subsolados; Apoyo a la regeneración.", "Mejora de pistas y recuperación de infraestructuras.",  "Prevención de plagas (trampas)."],
+    "empresa": "CONSTRUCCIONES ALPI S.A."
+  },
+  {
+    "id_obra": "25PFOB105",
+    "nombre": "Restauración hidrológico-forestal del incendio de Somiedo (Asturias). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Somiedo"],
+    "presupuesto": 250676.53,
+    "fecha_ini": "02/12/2025",
+    "Dir_obra":"Jaime Martín Herrero",
+    "trabajos": ["Corta de pies quemados y acordonado de restos", "Roza del matorral quemado y acordonado de restos", "Mejora y reparación de pistas", "Fajas perimetrales en brañas", "Otros trabajos puntuales y menores"],
+    "empresa": "MEDIOAMBIENTAL VALLEDOR, S.L"
+  },
+  {
+    "id_obra": "25PFOB106",
+    "nombre": "Restauración hidrológico-forestal del incendio de Cangas del Narcea y Degaña (Asturias). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Cangas de Narcea, Degaña"],
+    "presupuesto": 748139.76,
+    "fecha_ini": "27/11/2025",
+    "Dir_obra":"Cristóbal Valdés Ambrés",
+    "trabajos": ["Corta de pies quemados y acordonado de restos", "Construcción de fajinas", "Extendido manual de paja", "Restauración de cubierta vegetal", "Construcción, mantenimiento y protección de infraestructuras viarias"],
+    "empresa": "FORESTAL MALLEZA S.L."
+  },
+  {
+    "id_obra": "25PFOB107",
+    "nombre": "Restauración hidrológico-forestal del incendio de Larouco I en la provincia de Ourense. Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Larouco (Ourense)"],
+    "presupuesto": 799246.66,
+    "fecha_ini": "16/12/2025",
+    "Dir_obra":"María Araceli Giráldez Cortegoso",
+    "trabajos": ["Mejora de infraestructuras viarias", "Mejora de la red de drenaje", "Restauración hidrológica y de hábitats de fauna", "Eliminación de madera quemada"],
+    "empresa": "BRAÑA, S.C.L."
+  },
+  {
+    "id_obra": "25PFOB108",
+    "nombre": "Restauración hidrológico-forestal del incendio de Larouco II en la provincia de Ourense. Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Larouco (Ourense)"],
+    "presupuesto": 799855.59,
+    "fecha_ini": "16/12/2025",
+    "Dir_obra":"Ángel Fouces González",
+    "trabajos": ["Mejora de infraestructuras viarias", "Mejora de la red de drenaje", "Restauración hidrológica y de hábitats de fauna", "Eliminación de madera quemada"],
+    "empresa": "AMETLAM, S.L."
+  },
+  {
+    "id_obra": "25PFOB109",
+    "nombre": "Restauración hidrológico-forestal del incendio de Larouco III en la provincia de Ourense. Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Larouco (Ourense)"],
+    "presupuesto": 798625.25,
+    "fecha_ini": "17/12/2025",
+    "Dir_obra":"María Araceli Giráldez Cortegoso",
+    "trabajos": ["Mejora de infraestructuras viarias", "Mejora de la red de drenaje", "Restauración hidrológica y de hábitats de fauna", "Eliminación de madera quemada"],
+    "empresa": "GALICIANATURA, OBRAS Y PROYECTOS, S.L."
+  },
+  {
+    "id_obra": "25PFOB110",
+    "nombre": "Restauración hidrológico-forestal del incendio de Larouco IV en la provincia de Lugo. Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Larouco (Lugo)"],
+    "presupuesto": 672632.26,
+    "fecha_ini": "16/12/2025",
+    "Dir_obra":"Manuel González Fernández",
+    "trabajos": ["Mejora de infraestructuras viarias", "Mejora de la red de drenaje", "Restauración hidrológica y de hábitats de fauna", "Eliminación de madera quemada"],
+    "empresa": "MEDIOAMBIENTAL VALLEDOR S.L."
+  },
+  {
+    "id_obra": "25PFOB111",
+    "nombre": "Restauración hidrológico-forestal del incendio de Oímbra I (Ourense). Susceptible de ser cofinanciado por FEDER 21-27.",
+    "incendio_relacionado":["Oimbra"],
+    "presupuesto": 799751.30,
+    "fecha_ini": "19/12/2025",
+    "Dir_obra":"Jesús Manuel Sánchez Sánchez",
+    "trabajos": ["Conservación de la red de pistas forestales en buen estado", "Control de la erosión", "Disminución del riesgo de plagas y enfermedades", "Favorecimiento del rebrote de especies frondosas", "Mejora del hábitat para la fauna"],
+    "empresa": "FORESTACIÓN GALICIA S.A."
+  },
+  {
+    "id_obra": "25PFOB112",
+    "nombre": "Restauración hidrológico-forestal del incendio de Oímbra II (Ourense). Susceptible de ser cofinanciado por FEDER 21-27.",
+    "incendio_relacionado":["Oimbra"],
+    "presupuesto": 799827.59,
+    "fecha_ini": "16/12/2025",
+    "Dir_obra":"Marta Prieto Blanco",
+    "trabajos": ["Conservación de la red de pistas forestales en buen estado", "Control de la erosión", "Disminución del riesgo de plagas y enfermedades", "Favorecimiento del rebrote de especies frondosas", "Mejora del hábitat para la fauna"],
+    "empresa": "SERVITEC MEDIOAMBIENTE S.L."
+  },
+  {
+    "id_obra": "25PFOB113",
+    "nombre": "Restauración hidrológico-forestal del incendio de Oímbra III (Ourense). Susceptible de ser cofinanciado por FEDER 21-27.",
+    "incendio_relacionado":["Oimbra"],
+    "presupuesto": 602773.37,
+    "fecha_ini": "16/01/2026",
+    "Dir_obra":"José Manuel Arca Eiroá",
+    "trabajos": ["Conservación de la red de pistas forestales en buen estado", "Control de la erosión", "Disminución del riesgo de plagas y enfermedades", "Favorecimiento del rebrote de especies frondosas", "Mejora del hábitat para la fauna"],
+    "empresa": "SERVITEC MEDIOAMBIENTE S.L."
+  },
+  {
+    "id_obra": "25PFOB114",
+    "nombre": "Restauración hidrológico-forestal del incendio de Chandrexa de Queixa I (Ourense). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Chandrexa de Queixa"],
+    "presupuesto": 639693.34,
+    "fecha_ini": "17/12/2025",
+    "Dir_obra":"Alicia Fernández Lorenzo",
+    "trabajos": ["Mejora de infraestructuras viarias", "Mejora de la red de drenaje", "Restauración hidrológica y de hábitats de fauna", "Eliminación de madera quemada"],
+    "empresa": "JOGOSA OBRAS Y SERVICIOS S.L.U."
+  },
+  {
+    "id_obra": "25PFOB115",
+    "nombre": "Restauración hidrológico-forestal del incendio de Chandrexa de Queixa II (Ourense). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Chandrexa de Queixa"],
+    "presupuesto": 799502.61,
+    "fecha_ini": "17/12/2025",
+    "Dir_obra":"Ana María Mendoza Pardo",
+    "trabajos": ["Mejora de infraestructuras viarias", "Mejora de la red de drenaje", "Restauración hidrológica y de hábitats de fauna", "Eliminación de madera quemada"],
+    "empresa": "FORESTACION GALICIA S.A."
+  },
+  {
+    "id_obra": "25PFOB116",
+    "nombre": "Restauración hidrológico-forestal del incendio de Chandrexa de Queixa III (Ourense). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Chandrexa de Queixa"],
+    "presupuesto": 782178.38,
+    "fecha_ini": "16/12/2025",
+    "Dir_obra":"María José Alberte Rivera",
+    "trabajos": ["Mejora de infraestructuras viarias", "Mejora de la red de drenaje", "Restauración hidrológica y de hábitats de fauna", "Eliminación de madera quemada"],
+    "empresa": "BRAÑA, S.C.L."
+  },
+  {
+    "id_obra": "25PFOB117",
+    "nombre": "Restauración hidrológico-forestal del incendio de A Mezquita I (Ourense). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["A Mezquita"],
+    "presupuesto": 799911.13,
+    "fecha_ini": "17/12/2025",
+    "Dir_obra":"Francisco Javier Varela González",
+    "trabajos": ["Mejora de infraestructuras viarias", "Mejora de la red de drenaje", "Restauración hidrológica y de hábitats de fauna", "Eliminación de madera quemada"],
+    "empresa": "REPOBOACIÓNS E DESBROCES DO NOROESTE S.L."
+  },
+  {
+    "id_obra": "25PFOB118",
+    "nombre": "Restauración hidrológico-forestal del incendio de A Mezquita II (Ourense). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["A Mezquita"],
+    "presupuesto": 675662.08,
+    "fecha_ini": "17/12/2025",
+    "Dir_obra":"José Manuel Pérez Rodríguez",
+    "trabajos": ["Mejora de infraestructuras viarias", "Mejora de la red de drenaje", "Restauración hidrológica y de hábitats de fauna", "Eliminación de madera quemada"],
+    "empresa": "OS ÉRBEDOS S. COOP. LTDA."
+  },
+  {
+    "id_obra": "25PFOB119",
+    "nombre": "Restauración hidrológico-forestal del incendio de Carballeda de Valdeorras (Ourense). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Carballeda de Valdeorras"],
+    "presupuesto": 529644.93,
+    "fecha_ini": "19/12/2025",
+    "Dir_obra":"Alberto Gallego Gutiérrez",
+    "trabajos": ["Mejora de infraestructuras viarias", "Mejora de la red de drenaje", "Restauración hidrológica y de hábitats de fauna"],
+    "empresa": "HEBLATRI S.L."
+  },
+  {
+    "id_obra": "25PFOB120",
+    "nombre": "Restauración hidrológico-forestal del incendio de Molezuelas de la Carballeda (Zamora). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Molezuelas de la Carballeda (ZA)"],
+    "presupuesto": 500001.26,
+    "fecha_ini": "11/12/2025",
+    "Dir_obra":"Raúl de la Fuente Martín",
+    "trabajos": ["Control de la erosión: Construcción albarradas y fajinas.", "Reparación de infraestructuras: reparaciones cerramientos ganaderos, infraestructuras de drenaje, infraestructuras extinción incendios (puntos agua), repaso pistas.", "Extracción de madera no comercial", "Fauna: desbroce y siembra pastos. Construcción abrevaderos", "Control de plagas: colocación trampas"],
+    "empresa": "ESTRAFO S.L."
+  },
+  {
+    "id_obra": "25PFOB121",
+    "nombre": "Restauración hidrológico-forestal del incendio de Canalejas (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Canalejas (LE)"],
+    "presupuesto": 500059.10,
+    "fecha_ini": "19/12/2025",
+    "Dir_obra":"Mariano Torre Antón",
+    "trabajos": ["Eliminación de restos mediante trituración de 2.000 árboles/ha en pie.", "Arreglo, ensanche y apertura de pistas con aportes puntuales de material granular.", "<b><u>Ensanche de puente</u></b> y hormigonado del firme.", "Charcas para la decantación de las cenizas y finos procedentes de las escorrentías de las laderas y para la fauna."],
+    "empresa": "OFICINA TÉCNICA DEMONTES"
+  },
+  {
+    "id_obra": "25PFOB122",
+    "nombre": "Restauración hidrológico-forestal del incendio de Yeres/Llamas de Cabrera I (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Yeres, Llamas de Cabrera"],
+    "presupuesto": 504051.43,
+    "fecha_ini": "19/12/2025",
+    "Dir_obra":"Yolanda Cuevas Sierra",
+    "trabajos": ["Control de la erosión: construcción albarrada, fajina, y dique de madera. Acondicionamiento de frezaderos. Trabajos terrenos para frenar escorrentía. Ensanchado caminos. Conservación cortafuegos.", "Reparación de infraestructuras: construcción punto de agua. construcción cunetas y pasos de agua.", "Extracción de madera no comercial"],
+    "empresa": "TRAFOBER"
+  },
+  {
+    "id_obra": "25PFOB123",
+    "nombre": "Restauración hidrológico-forestal del incendio de Yeres/Llamas de Cabrera II (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Yeres, Llamas de Cabrera"],
+    "presupuesto": 503781.78,
+    "fecha_ini": "19/12/2025",
+    "Dir_obra":"Yolanda Cuevas Sierra",
+    "trabajos": ["Control de la erosión: construcción albarrada, fajina, y dique de madera. Acolchado paja.", "Reparación de infraestructuras: construcción punto de agua. construcción cunetas y pasos de agua, Conservación de cortafuegos."],
+    "empresa": "LA PIA SERVICIOS SILVICOLAS S.L."
+  },
+  {
+    "id_obra": "25PFOB124",
+    "nombre": "Restauración hidrológico-forestal del incendio de Yeres/Llamas de Cabrera III (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Yeres, Llamas de Cabrera"],
+    "presupuesto": 505483.05,
+    "fecha_ini": "19/12/2025",
+    "Dir_obra":"Yolanda Cuevas Sierra",
+    "trabajos": ["Control de la erosión: construcción albarrada, fajina, y dique de madera. Acondicionamiento de frezaderos. Trabajos terrenos para frenar escorrentía (subsolado) y acolchado con paja.", "Reparación de infraestructuras: construcción punto de agua. Tubería captación agua. Limpieza pasos de agua y desbroces.", "Extracción de madera no comercial", "Restauración de la vegetación: ahoyado y plantación"],
+    "empresa": "ECOSISTEMA BIERZO"
+  },
+  {
+    "id_obra": "25PFOB126",
+    "nombre": "Restauración hidrológico-forestal del incendio de Cuevas del Valle (Ávila) 2. Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Cuevas del Valle"],
+    "presupuesto": 500008.93,
+    "fecha_ini": "12/12/2025",
+    "Dir_obra":"Ángel Iglesias Ranz",
+    "trabajos": ["Clareo, clara, corta, desramado, tronzado, saca de madera y recogida de restos.", "Trituración de árboles en pie creando un mulching o acolchado de astilla repartida sobre el terreno."],
+    "empresa": "PINO FORESTAL INGENIERÍA, S.L."
+  },
+  {
+    "id_obra": "25PFOB127",
+    "nombre": "Restauración hidrológico-forestal del incendio de Castrocalbón (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Molezuelas de la Carballeda (LE)"],
+    "presupuesto": 998752.22,
+    "fecha_ini": "17/12/2025",
+    "Dir_obra":"Jose Antonio Sánchez Ovejero",
+    "trabajos": ["Control de la erosión: construcción albarrada, fajina, y dique de madera. acolchado con paja y preparación terreno para siembra pratenses y colocación malla coco.", "Reparación de infraestructuras: reparación pistas y caminos forestales y pasos agua.", "Extracción de madera no comercial", "Instalación de pastizales.", "Fauna: acondicionamiento frezaderos y accesos a lamina agua."],
+    "empresa": "FORESTACIÓN Y REPOBLACIÓN S.A."
+  },
+  {
+    "id_obra": "25PFOB128",
+    "nombre": "Restauración hidrológico-forestal del incendio de Castrocalbón II (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Molezuelas de la Carballeda (LE)"],
+    "presupuesto": 501480.97,
+    "fecha_ini": "19/12/2025",
+    "Dir_obra":"César Gómez Cáceres",
+    "trabajos": ["Control de la erosión: construcción albarrada, fajina, y dique de madera.", "Reparación de infraestructuras: reparación pistas y caminos forestales.", "Extracción de madera no comercial", "Fauna: acondicionamiento y construcción de frezaderos y accesos a lamina agua. Desbroce y selección de pies en márgenes rio. Construcción o rehabilitación de presas sumergidas mediante la colocación de roca", "Implantación de pastizales e infraestructuras ganaderas (consiste en abrevadero)"],
+    "empresa": "ARES FORESTAL S.L."
+  },
+  {
+    "id_obra": "25PFOB129",
+    "nombre": "Restauración hidrológico-forestal del incendio de Fasgar-Igüeña (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Fasgar – Igüeña"],
+    "presupuesto": 500073.37,
+    "fecha_ini": "17/12/2025",
+    "Dir_obra":"Mario Martin Rived",
+    "trabajos": ["Control de la erosión: construcción albarradas y fajinas.", "Trabajos en la red viaria: apertura NUEVAS pistas y ENSANCHE Y RECONSTRUCCIÓN pistas existentes. Refino, planeo y limpieza de cunetas. Elevación del plano de fundación pistas. Instalación pasos de agua.", "Reposición de vegetación: repoblación forestal y pastizales.", "Otras actuaciones: apertura y mantenimiento cortafuegos. Reposición cierres ganaderos dañados."],
+    "empresa": "CONTRATAS ANCAR, S.L."
+  },
+  {
+    "id_obra": "25PFOB130",
+    "nombre": "Restauración hidrológico-forestal del incendio de Canalejas II (Palencia y León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Canalejas (LE-PA)"],
+    "presupuesto": 500071.85,
+    "fecha_ini": "20/01/2026",
+    "Dir_obra":"Ángel Moreno Redondo",
+    "trabajos": ["Protección contra la erosión hídrica: corta y trituración árboles quemados. Desbroce.", "Adecuación reparación e instalación de infraestructuras: Adecuación y mejora de pistas forestales. Recuperación de cauce (retirada de sedimentos arrastrados). Apertura y/o mantenimiento de cortafuegos. Reposición de cerramientos", "Reposición de vegetación: repoblación forestal y pastizales."],
+    "empresa": "CONSERVACION Y SERVICIO FORESTAL S.L.U."
+  },
+  {
+    "id_obra": "25PFOB131",
+    "nombre": "Restauración hidrológico-forestal del incendio de La Uña (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["La Uña"],
+    "presupuesto": 499998.54,
+    "fecha_ini": "12/01/2026",
+    "Dir_obra":"Mario Martin Rived",
+    "trabajos": ["Control de la erosión: construcción albarradas, fajinas y bermas.", "Reparación de infraestructuras viarias: excavación en roca para acondicionar las pistas en un lugar determinado, pasos de agua con sus arquetas y embocaduras, pequeños muros de contención, limpieza manual de pasos de agua, pavimentación puntual con hormigón armado etc.", "Reparación de infraestructuras ganaderas: construcción mangas de manejo de ganado, abrevaderos (con acometidas, arquetas, solera etc.) así como la reparación y mantenimiento de cerramientos ganaderos.", "Infraestructuras contraincendios: Construcción de charca para extinción de incendios.", "Extracción y eliminación de madera no comercial"],
+    "empresa": "INGENIERÍA Y TÉCNICAS GLOBALES DE RESOLUCIÓN AMBIENTAL S.L."
+  },
+  {
+    "id_obra": "25PFOB132",
+    "nombre": "Restauración hidrológico-forestal del incendio de Porto-La Baña (Zamora). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Porto - La Baña (ZA)"],
+    "presupuesto": 750001.72,
+    "fecha_ini": "30/12/2025",
+    "Dir_obra":"Roberto López Rodríguez",
+    "trabajos": ["Actuaciones de protección contra la erosión hídrica: albarradas y fajinas. Acolchado con paja. Implantación y mejora de pastizales.", "Trabajos en la red viaria: Adecuación y mejora de pistas forestales (incluye instalación pasos de agua y escolleras). Apertura de cortafuegos. Puntos de agua (limpieza de contorno de puntos de agua existentes y construcción de abrevadero). Reposición de cerramientos e infraestructura ganadera (manga ganadera).", "Otros: Extraccion y/o eliminación de madera no comercial. Balizamiento de masas singulares. Restauración de frezaderos."],
+    "empresa": "EMELESA S.L."
+  },
+  {
+    "id_obra": "25PFOB133",
+    "nombre": "Restauración hidrológico-forestal del incendio de Barniedo de la Reina I (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Barniedo"],
+    "presupuesto": 666667.11,
+    "fecha_ini": "12/01/2026",
+    "Dir_obra":"Mario Martin Rived",
+    "trabajos": ["Control de la erosión: construcción albarradas, fajinas y bermas.", "Reparación de infraestructuras viarias: excavación en roca para acondicionar las pistas en un lugar determinado, pasos de agua con sus arquetas y embocaduras, pequeños muros de contención, limpieza manual de pasos de agua, pavimentación puntual con hormigón armado etc.", "Reparación de infraestructuras ganaderas: construcción mangas de manejo de ganado, abrevaderos (con acometidas, arquetas, solera etc.) así como la reparación y mantenimiento de cerramientos ganaderos.", "Extracción y eliminación de madera no comercial"],
+    "empresa": "EULEN S.A."
+  },
+  {
+    "id_obra": "25PFOB134",
+    "nombre": "Restauración hidrológico-forestal del incendio de Barniedo de la Reina II (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Barniedo"],
+    "presupuesto": 666670.11,
+    "fecha_ini": "12/01/2026",
+    "Dir_obra":"Mario Martin Rived",
+    "trabajos": ["Control de la erosión: construcción albarradas, fajinas y bermas.", "Reparación de infraestructuras viarias: excavación en roca para acondicionar las pistas en un lugar determinado, pasos de agua con sus arquetas y embocaduras, pequeños muros de contención, limpieza manual de pasos de agua, pavimentación puntual con hormigón armado etc.", "Reparación de infraestructuras ganaderas: construcción mangas de manejo de ganado, abrevaderos (con acometidas, arquetas, solera etc.) así como la reparación y mantenimiento de cerramientos ganaderos.", "Infraestructuras contraincendios: Construcción de charca para extinción de incendios.", "Extracción y eliminación de madera no comercial"],
+    "empresa": "EUROSERVICIOS Y OBRAS FORESTALES S.A."
+  },
+  {
+    "id_obra": "25PFOB135",
+    "nombre": "Restauración hidrológico-forestal del incendio de Barniedo de la Reina III (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Barniedo"],
+    "presupuesto": 666668.93,
+    "fecha_ini": "12/01/2026",
+    "Dir_obra":"Mario Martin Rived",
+    "trabajos": ["Control de la erosión: construcción albarradas, fajinas y bermas.", "Infraestructuras contraincendios: Construcción de charca para extinción de incendios.", "Reparación de infraestructuras ganaderas: construcción mangas de manejo de ganado, abrevaderos (con acometidas, arquetas, solera etc.) así como la reparación y mantenimiento de cerramientos ganaderos.", "Reparación de infraestructuras viarias: excavación en roca para acondicionar las pistas en un lugar determinado, pasos de agua con sus arquetas y embocaduras, pequeños muros de contención, limpieza manual de pasos de agua, pavimentación puntual con hormigón armado etc..", "Extracción y eliminación de madera no comercial"],
+    "empresa": "EUROSERVICIOS Y OBRAS FORESTALES S.A."
+  },
+  {
+    "id_obra": "25PFOB136",
+    "nombre": "Restauración hidrológico-forestal del incendio de Porto-La Baña II (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Porto - La Baña (LE)"],
+    "presupuesto": 500007.68,
+    "fecha_ini": "12/01/2026",
+    "Dir_obra":"Elena Soria Abad",
+    "trabajos": ["Control de la erosión: construcción albarradas, fajinas, dique transversal de madera, Subsolado simple con bulldozer, acolchado con paja y siembra de pratenses con malla coco.", "Reparación de infraestructuras: mantenimiento y mejora de las pistas forestales.", "Extracción de madera no comercial.", "Fauna: Acondicionamiento de Frezaderos."],
+    "empresa": "INGENIERÍA Y DISEÑOS TÉCNICOS S.A."
+  },
+  {
+    "id_obra": "25PFOB137",
+    "nombre": "Restauración hidrológico-forestal del incendio de Anllares del Sil y Gestoso I (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Anllares"],
+    "presupuesto": 751220.83,
+    "fecha_ini": "12/01/2026",
+    "Dir_obra":"María del Mar López Escribano",
+    "trabajos": ["Actuaciones de protección contra la erosión hídrica: trituración y esparcido madera quemada. Construcción de albarradas y fajinas.", "Adecuación reparación e instalación de infraestructuras: pistas forestales (también se añadirán nuevos tramos y se harán pasos de agua). Apertura de cortafuegos. Puntos de agua (reparación, mejora e instalación de depósitos de agua y elementos asociados).", "Reposición de la vegetación: Implantación y mejora de pastizales."],
+    "empresa": "SERFONOR MEDIOAMBIENTE S.L.U."
+  },
+  {
+    "id_obra": "25PFOB138",
+    "nombre": "Restauración hidrológico-forestal del incendio de Anllares del Sil y Gestoso II (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Gestoso"],
+    "presupuesto": 780803.19,
+    "fecha_ini": "12/01/2026",
+    "Dir_obra":"José Javier Vidales Berciano",
+    "trabajos": ["Control de la erosión: construcción albarrada y fajinas.", "Mejora de cauces: Acondicionamiento de frezaderos; Desbroce, Poda, clareo de arbolado, en márgenes fluviales; Construcción o rehabilitación de presas sumergidas mediante la colocación de roca.", "Tratamiento de la vegetación: faja auxiliar en masa mixta de frondosas. Desbroces. Trituración.", "Reparación de infraestructuras: pasos de agua y desbroce cunetas caminos.", "Apertura de cortafuegos y Repaso de cortafuegos.", "Apertura y repaso de pistas.", "<span style= color:red;>Otras infraestructuras: construcción del puente (20 x 7 m)</span>"],
+    "empresa": "PILSAN BIERZO S.L.U."
+  },
+  {
+    "id_obra": "25PFOB139",
+    "nombre": "Restauración hidrológico-forestal del incendio de Anllares del Sil y Gestoso III (León). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Gestoso"],
+    "presupuesto": 717975.75,
+    "fecha_ini": "12/01/2026",
+    "Dir_obra":"José Javier Vidales Berciano",
+    "trabajos": ["Control de la erosión: construcción albarrada y fajinas.", "Tratamiento de la vegetación quemada: faja auxiliar en masa mixta de frondosas. Desbroces. Trituración", "Restauración de cauces: Acondicionamiento de frezaderos; Desbroce, Poda, clareo de arbolado, en márgenes fluviales; Construcción o rehabilitación de presas sumergidas mediante la colocación de roca.", "Restauración de pastizales.", "Reparación de infraestructuras incendiadas: pasos de agua y desbroce cunetas caminos.", "Punto de agua y abrevadero: Construir un punto de agua y también un abrevadero.", "Apertura de cortafuegos y Repaso de cortafuegos.", "Apertura y repaso de pistas."],
+    "empresa": "SERFONOR MEDIOAMBIENTE S.L.U."
+  },
+  {
+    "id_obra": "25PFOB140",
+    "nombre": "Restauración hidrológico-forestal del incendio de Cardoso de la Sierra (Guadalajara). Susceptible de ser cofinanciado por FEDER 21-27",
+    "incendio_relacionado":["Peñalba de la Sierra"],
+    "presupuesto": 501193.76,
+    "fecha_ini": "26/01/2026",
+    "Dir_obra":"Ana Maria Tobeña Latre",
+    "trabajos": ["Reparación de la tubería enterrada", "Reparación camino."],
+    "empresa": "HOCENSA EMPRESA CONSTRUCTORA, S.A."
+  }
+]
