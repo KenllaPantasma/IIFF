@@ -118,10 +118,49 @@ window.abrirObraEnSidebar = function (id) {
             <p><b>Director de Obra:</b> ${info.Dir_obra || 'No disponible'}</p>
             <h3>Trabajos incluidos:</h3>
             <ul>${info.trabajos.map(t => `<li style="margin-bottom:10px;">${t}</li>`).join('')}</ul>
+            <hr>
+            <h3 style="color:#2c3e50;">Montes de esta actuación:</h3>
+            <ul id="lista-montes-sidebar" style="list-style: none; padding: 0;"></ul>
+            
+            <div style="height: 50px;"></div>
             <div style="height: 50px;">
         </div>`;
     content.scrollTop = 0;
+
+    // LLAMAMOS AL FILTRADO DE MONTES
+    // Usamos el ID de la obra para buscar qué montes lo contienen en su "lista_obras"
+    if (capas.montes) {
+        const listaUL = document.getElementById('lista-montes-sidebar');
+
+        capas.montes.eachLayer(function (layer) {
+            const props = layer.feature.properties; // Simplificamos el acceso a las propiedades
+            const listaObrasDelMonte = props.lista_obras || "";
+
+            // Comprobamos si el ID de la obra actual está en la lista del monte
+            if (listaObrasDelMonte.split(',').map(s => s.trim()).includes(id)) {
+                const li = document.createElement('li');
+                li.style.cssText = "padding: 10px; border: 1px solid #eee; margin-bottom: 5px; border-radius: 4px; cursor: pointer; background: #f9f9f9;";
+                // Añadimos el campo TIPO con un estilo resaltado
+                li.innerHTML = `
+                    <div style="font-weight: bold; color: #2c3e50;">${props.nombre_monte}</div>
+                    <div style="font-size: 0.85em; color: #7f8c8d; margin-top: 4px;">
+                        <span style="background: #e8f5e9; color: #2e7d32; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.8em; margin-right: 5px;">
+                            ${props.TIPO || 'N/A'}
+                        </span>
+                        ID: ${props.id_monte}
+                    </div>
+                `;
+
+                li.onclick = () => {
+                    mapa.fitBounds(layer.getBounds(), { padding: [30, 30] });
+                    layer.openPopup();
+                };
+                listaUL.appendChild(li);
+            }
+        });
+    }
 }
+
 
 window.cerrarSidebar = function () {
     // 1. Cerramos el panel visualmente
@@ -197,6 +236,8 @@ async function cargarVisorLocal() {
         window.jsonObrasDetalle = resDetalle;
 
         capas.montes = L.geoJSON(resMontes, { style: estiloNormal, onEachFeature: onEachMonte }).addTo(mapa);
+
+        actualizarListaMontes(capas.montes);
 
         capas.perimetros = L.geoJSON(resPerimetros, {
             style: estiloPerimetros,
@@ -463,7 +504,7 @@ botonGPS.onAdd = function (map) {
                 style="background-color: #ffffff; border: none; width: 34px; height: 34px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; border-radius: 2px;">
             📍
         </button>`;
-    
+
     div.onclick = function () {
         mapa.locate({ setView: true, maxZoom: 16 });
     };
@@ -473,12 +514,12 @@ botonGPS.onAdd = function (map) {
 botonGPS.addTo(mapa);
 
 // Manejar el evento cuando se encuentra la ubicación
-mapa.on('locationfound', function(e) {
+mapa.on('locationfound', function (e) {
     // Borrar marcador anterior si existe
     if (window.miMarcadorGPS) {
         mapa.removeLayer(window.miMarcadorGPS);
     }
-    
+
     // Crear un círculo azul estilo GPS
     window.miMarcadorGPS = L.circleMarker(e.latlng, {
         radius: 8,
@@ -491,8 +532,48 @@ mapa.on('locationfound', function(e) {
 });
 
 // Manejar error si el usuario deniega el permiso
-mapa.on('locationerror', function(e) {
+mapa.on('locationerror', function (e) {
     alert("No se pudo acceder a tu ubicación: " + e.message);
 });
+
+function actualizarListaMontes(capaGeoJSON) {
+    const listaUL = document.getElementById('lista-montes-sidebar');
+    if (!listaUL) return;
+
+    listaUL.innerHTML = ''; // Limpiar lista anterior
+
+    capaGeoJSON.eachLayer(function (layer) {
+        const props = layer.feature.properties;
+        const li = document.createElement('li');
+
+        // Estilizamos el elemento de la lista
+        li.style.cssText = `
+            padding: 10px; 
+            border-bottom: 1px solid #eee; 
+            cursor: pointer; 
+            font-size: 13px;
+            transition: background 0.2s;
+        `;
+
+        // Usamos los campos de tu geojson: id_monte y nombre_monte
+        li.innerHTML = `<span style="color: #2c3e50; font-weight: bold;">${props.id_monte}</span><br>
+                        <span style="color: #7f8c8d;">${props.nombre_monte}</span>`;
+
+        // Efecto visual al pasar el ratón
+        li.onmouseover = () => li.style.backgroundColor = "#f9f9f9";
+        li.onmouseout = () => li.style.backgroundColor = "transparent";
+
+        // Al hacer clic: el mapa vuela al monte y abre su popup
+        li.onclick = function () {
+            mapa.fitBounds(layer.getBounds(), { padding: [30, 30], maxZoom: 16 });
+            layer.openPopup();
+
+            // Si estás en móvil, podrías querer cerrar el sidebar aquí
+            // if (window.innerWidth < 768) cerrarSidebar(); 
+        };
+
+        listaUL.appendChild(li);
+    });
+}
 
 cargarVisorLocal();
