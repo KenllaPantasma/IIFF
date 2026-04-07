@@ -6,7 +6,8 @@ body, html {
 }
 #map { height: 100vh; width: 100%; z-index: 1; }
 
-/* EStilo para el buscador: el contenedor, los controles y tipo de búsqueda (opcion de busqueda si por obra, DO, empresa, incendio)*/
+/* Estilo para el buscador: el contenedor, los controles y tipo de búsqueda (opcion de busqueda si por obra, DO, empresa, incendio)*/
+/* --- AJUSTE GENERAL DEL BUSCADOR --- */
 #buscador-container {
     position: absolute;
     top: 15px;
@@ -16,9 +17,75 @@ body, html {
     padding: 12px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    
+    /* CAMBIO: Ahora los elementos se apilan en columna */
     display: flex;
-    gap: 8px;
+    flex-direction: column; 
+    gap: 10px;
+    width: 300px; /* Ancho fijo para que sea estético */
 }
+
+/* Ajustamos el buscador de direcciones para que ocupe todo el ancho del contenedor */
+#geocoder-insertar .leaflet-control-geocoder {
+    width: 100% !important;
+    margin: 0 !important;
+    box-shadow: none !important; /* Quitamos la sombra porque ya la tiene el padre */
+    border-top: 1px solid #eee; /* Una línea sutil de separación */
+    padding-top: 10px;
+}
+
+#geocoder-insertar .leaflet-control-geocoder-form input {
+    width: 100% !important;
+    background: #f9f9f9 !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+}
+
+/* Resultados del geocoder: que floten sobre el mapa pero alineados al buscador */
+.leaflet-control-geocoder-alternatives {
+    width: 100% !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+/* --- ADAPTACIÓN PARA MÓVILES (Media Query) --- */
+@media (max-width: 768px) {
+    #buscador-container {
+        left: 10px;
+        top: 10px;
+        display: flex;
+        flex-direction: column; /* Apilamos select e input */
+        max-width: 320px; /* Reducimos ancho para dejar libre la derecha */
+        gap: 10px;
+        padding: 6px;
+        box-sizing: border-box; /* Fundamental para que el padding no sume al ancho */
+    }
+
+    #tipo-busqueda, 
+    #input-busqueda {
+    width: 100% !important; /* Fuerza a ocupar el ancho del contenedor */
+    box-sizing: border-box; /* El padding se queda DENTRO del 100% */
+    margin: 0; 
+    height: 38px;
+}
+
+    /* Ocultamos los textos de los botones para ahorrar espacio */
+    #btn-buscar, #btn-limpiar {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    /* El sidebar en móvil cubrirá el mapa, no lo desplazará */
+    body.sidebar-abierto #map {
+        margin-right: 0 !important;
+        width: 100% !important;
+    }
+    
+    .sidebar {
+        max-width: 100%;
+        width: 0;
+    }
+}
+
 #controles {
     position: absolute;
     top: 20px;
@@ -193,12 +260,15 @@ summary:hover {
 /* 1. Estilos compartidos de contenedor */
 .leaflet-control-geocoder.leaflet-control, 
 .leaflet-control-layers-expanded {
-    width: 200px !important;
+    width: 220px !important;
     min-width: 200px !important;
     background: white !important;
     border: none !important;
     border-radius: 8px !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+    margin-right: 10px !important; /* Separación del borde derecho */
+    margin-top: 15px !important;   /* Alineado con tu buscador de obras */
+    z-index: 1100 !important;      /* Por encima de las capas del mapa */
 }
 
 /* 2. Buscador: quitamos overflow para que se vea la lista */
@@ -235,21 +305,24 @@ summary:hover {
     background: transparent !important;
 }
 
-/* 5. Lista de resultados (SIEMPRE DEBAJO) */
+/* Ajuste para que no tape el selector de capas si ambos están a la derecha */
+.leaflet-right .leaflet-control {
+    float: right;
+    clear: both; /* Apila los controles uno debajo de otro si no caben */
+    margin-bottom: 10px;
+}
+
+/* 5. Lista de resultados (Corregido para que flote correctamente) */
 .leaflet-control-geocoder-alternatives {
     position: absolute !important;
-    top: 100% !important; /* Se pega al borde inferior */
-    left: 0 !important;
-    width: 200px !important;
+    top: 100% !important; 
+    right: 0 !important; /* Alineado a la derecha ahora que está en ese lado */
+    left: auto !important;
+    width: 220px !important;
     background: white !important;
     border: 1px solid #ccc !important;
-    border-top: none !important;
-    border-radius: 0 0 8px 8px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    z-index: 1000 !important;
-    display: block !important; /* Asegura visibilidad */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+    z-index: 1200 !important; 
 }
 
 #input-busqueda { width: 280px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }

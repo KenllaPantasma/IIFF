@@ -1,14 +1,14 @@
 // --- VARIABLES GLOBALES ---
 let mapa;
-let capas = {}; 
-let datosObras = []; 
+let capas = {};
+let datosObras = [];
 
 // --- 1. MAPAS BASE ---
 const topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { attribution: '© OpenTopoMap' });
 const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: '© Esri' });
 const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' });
 const limitesAdmin = L.tileLayer.wms("https://www.ign.es/wms-inspire/unidades-administrativas", {
-    layers: 'AU.AdministrativeUnit', 
+    layers: 'AU.AdministrativeUnit',
     format: 'image/png',
     transparent: true,
     attribution: '© IGN'
@@ -17,13 +17,13 @@ const esriClarity = L.tileLayer('https://clarity.maptiles.arcgis.com/arcgis/rest
     attribution: '© Esri'
 });
 
-mapa = L.map('map', { 
-    center: [42.58, -6.15], 
-    zoom: 9, 
-    layers: [topo] 
+mapa = L.map('map', {
+    center: [42.58, -6.15],
+    zoom: 9,
+    layers: [topo]
 });
 
-mapa.attributionControl.setPrefix('Fuente: MITECO, Junta de Castilla y León y Xunta de Galicia'); 
+mapa.attributionControl.setPrefix('Fuente: MITECO, Junta de Castilla y León y Xunta de Galicia');
 
 // --- 2. ESTILOS ---
 const estiloNormal = { color: "#501b05", weight: 2, fillColor: "#2ecc71", fillOpacity: 0.4 };
@@ -32,8 +32,8 @@ const estiloPerimetros = { color: "#e74c3c", weight: 2, fillOpacity: 0.1, opacit
 
 const coloresRN2000 = { 'A': '#e67e22', 'B': '#3498db', 'C': '#9b59b6' };
 function estiloRN2000(feature) {
-    const tipo = feature.properties.TIPO; 
-    const color = coloresRN2000[tipo] || '#95a5a6'; 
+    const tipo = feature.properties.TIPO;
+    const color = coloresRN2000[tipo] || '#95a5a6';
     return { color: "#333333", weight: 1.5, dashArray: '5, 5', fillColor: color, fillOpacity: 0.4 };
 }
 
@@ -44,7 +44,7 @@ const estiloUso = (f) => {
         case 'Forestal arbolado': colorCategoria = '#1a5928'; break;
         case 'Forestal desarbolado': colorCategoria = '#7fb366'; break;
         case 'No forestal': colorCategoria = '#f3d97d'; break;
-        default: colorCategoria = '#cccccc'; 
+        default: colorCategoria = '#cccccc';
     }
     return { fillColor: colorCategoria, weight: 0.5, color: 'white', fillOpacity: 0.6 };
 };
@@ -76,14 +76,29 @@ function onEachMonte(feature, layer) {
 }
 
 // --- 4. PANEL LATERAL (SIDEBAR) ---
-window.abrirObraEnSidebar = function(id) {
+window.abrirObraEnSidebar = function (id) {
     const info = buscarDetalle(id);
     if (!info) return;
 
     const sidebar = document.getElementById("sidebar");
     const content = document.getElementById('sidebar-content');
 
-    sidebar.style.width = "450px";
+    // Vamos a añadir la lógica para que en PC el mapa se desplace (clase sidebar-abierto) y en móvil no.
+    const esMovil = window.innerWidth <= 768;
+
+    if (esMovil) {
+        sidebar.style.width = "100%"; // Ocupa todo el ancho en el móvil
+        document.body.classList.remove("sidebar-abierto"); // No desplazamos el mapa
+    } else {
+        sidebar.style.width = "450px";
+        document.body.classList.add("sidebar-abierto"); // SÍ desplazamos el mapa en PC
+    }
+
+    // Forzamos a Leaflet a recalcular el tamaño del mapa tras el movimiento
+    setTimeout(() => {
+        if (mapa) mapa.invalidateSize({ animate: true });
+    }, 400);
+
     content.innerHTML = `
         <div style="padding: 15px;">
             <h2 style="color:#27ae60; margin-top:0;">${info.nombre}</h2>
@@ -100,16 +115,27 @@ window.abrirObraEnSidebar = function(id) {
     content.scrollTop = 0;
 }
 
-window.cerrarSidebar = function() {
+window.cerrarSidebar = function () {
+    // 1. Cerramos el panel visualmente
     document.getElementById("sidebar").style.width = "0";
-}
+
+    // 2. Quitamos la clase al body para que el mapa vuelva a ocupar todo el ancho (PC)
+    document.body.classList.remove("sidebar-abierto");
+
+    // 3. Reajuste técnico: el mapa debe "enterarse" de que su contenedor ha crecido
+    setTimeout(() => {
+        if (mapa) {
+            mapa.invalidateSize({ animate: true });
+        }
+    }, 400); // 400ms coincide con la duración de la transición en tu CSS
+};
 
 // --- 5. SUGERENCIAS BUSCADOR ---
 function actualizarSugerencias() {
     const filtroTipo = document.getElementById('tipo-busqueda').value;
     const dl = document.getElementById('opciones-obras');
     const input = document.getElementById('input-busqueda');
-    
+
     if (!dl) return;
 
     switch (filtroTipo) {
@@ -119,10 +145,10 @@ function actualizarSugerencias() {
         case 'incendio': input.placeholder = "Escribe nombre del incendio..."; break;
         default: input.placeholder = "Buscar en todo...";
     }
-    
-    dl.innerHTML = ""; 
-    input.value = "";  
-    
+
+    dl.innerHTML = "";
+    input.value = "";
+
     let sugerencias = new Set();
 
     if ((filtroTipo === 'incendio' || filtroTipo === 'todo') && capas.perimetros) {
@@ -144,11 +170,11 @@ function actualizarSugerencias() {
 }
 
 // --- BOTÓN INTELIGENTE COPERNICUS ---
-const botonCopernicus = L.control({ position: 'topleft' });
+const botonCopernicus = L.control({ position: 'topright' });
 botonCopernicus.onAdd = function (map) {
     const div = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
     div.innerHTML = `<button title="Ver esta zona en Copernicus (Sentinel-2)" style="background-color: #ffffff; border: none; width: 34px; height: 34px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; border-radius: 2px;">🛰️</button>`;
-    div.onclick = function() {
+    div.onclick = function () {
         const centro = mapa.getCenter();
         const urlLimpia = `https://browser.dataspace.copernicus.eu/?zoom=${mapa.getZoom()}&lat=${centro.lat.toFixed(5)}&lng=${centro.lng.toFixed(5)}`;
         window.open(urlLimpia, '_blank');
@@ -167,15 +193,15 @@ async function cargarVisorLocal() {
         const version = Date.now();
 
         const [resMontes, resPerimetros, resRN2000, resUso, resDetalle] = await Promise.all([
-            fetch(`data/montes_actuacion.geojson?v=${version}`).then(r => { if(!r.ok) throw new Error("Falta montes"); return r.json(); }),
-            fetch(`data/perimetros.geojson?v=${version}`).then(r => { if(!r.ok) throw new Error("Falta perimetros"); return r.json(); }),
-            fetch(`data/rn_2000.geojson?v=${version}`).then(r => { if(!r.ok) throw new Error("Falta RN2000"); return r.json(); }),
-            fetch(`data/uso_forestal.geojson?v=${version}`).then(r => { if(!r.ok) throw new Error("Falta uso"); return r.json(); }),
-            fetch(`data/obras_detalle.json?v=${version}`).then(r => { if(!r.ok) throw new Error("Falta obras"); return r.json(); })
+            fetch(`data/montes_actuacion.geojson?v=${version}`).then(r => { if (!r.ok) throw new Error("Falta montes"); return r.json(); }),
+            fetch(`data/perimetros.geojson?v=${version}`).then(r => { if (!r.ok) throw new Error("Falta perimetros"); return r.json(); }),
+            fetch(`data/rn_2000.geojson?v=${version}`).then(r => { if (!r.ok) throw new Error("Falta RN2000"); return r.json(); }),
+            fetch(`data/uso_forestal.geojson?v=${version}`).then(r => { if (!r.ok) throw new Error("Falta uso"); return r.json(); }),
+            fetch(`data/obras_detalle.json?v=${version}`).then(r => { if (!r.ok) throw new Error("Falta obras"); return r.json(); })
         ]);
 
         datosObras = resDetalle;
-        window.jsonObrasDetalle = resDetalle; 
+        window.jsonObrasDetalle = resDetalle;
 
         capas.montes = L.geoJSON(resMontes, { style: estiloNormal, onEachFeature: onEachMonte }).addTo(mapa);
 
@@ -185,7 +211,7 @@ async function cargarVisorLocal() {
                 l.bindTooltip(`<b>Incendio:</b> ${f.properties.NOMBRE_INCENDIO}`, { sticky: true, direction: "top" });
                 l.on('click', (e) => {
                     capas.montes.eachLayer(monteLayer => {
-                        if (monteLayer.getBounds().contains(e.latlng)) monteLayer.fire('click', e); 
+                        if (monteLayer.getBounds().contains(e.latlng)) monteLayer.fire('click', e);
                     });
                 });
             }
@@ -208,23 +234,43 @@ async function cargarVisorLocal() {
             "🦋 Red Natura": capas.rn2000,
             "🍂 Uso Forestal": capas.usoForestal
         };
-        L.control.layers({ "Topografía": topo, "Satélite": sat, "Esri Clarity (Reciente)": esriClarity, "Callejero": osm }, overlayMaps, { collapsed: false }).addTo(mapa);
 
+        // --- Control de capas adaptativo ---
+        const esPantallaPequena = window.innerWidth < 768;
+
+        const controlCapas = L.control.layers({ "Topografía": topo, "Satélite": sat, "Esri Clarity (Reciente)": esriClarity, "Callejero": osm }, overlayMaps, {
+            position: esPantallaPequena ? 'bottomright' : 'topright', // Se va abajo en móviles
+            collapsed: true
+        }).addTo(mapa);
+
+        // Si es móvil, también movemos el botón de Zoom al lado contrario (abajo izquierda)
+        if (esPantallaPequena) {
+            mapa.zoomControl.setPosition('bottomleft');
+        }
+
+        // 1. Creamos el buscador de direcciones pero SIN añadirlo al mapa directamente como control estándar
         const buscadorDirecciones = L.Control.geocoder({
             defaultMarkGeocode: false,
-            placeholder: "Buscar lugar o dirección...",
-            errorMessage: "No se encontró la ubicación.",
-            showUniqueResult: true,
+            placeholder: "Buscar dirección...",
             collapsed: false,
-            position: 'topright',
             geocoder: L.Control.Geocoder.nominatim({ geocodingQueryParams: { countrycodes: 'es' } })
-        }).on('markgeocode', function(e) {
+        });
+
+        // 2. Lo añadimos al mapa para que funcione la lógica
+        buscadorDirecciones.addTo(mapa);
+
+        // 3. MOVEMOS el elemento HTML del geocoder dentro de nuestro buscador de obras
+        const contenedorDestino = document.getElementById('geocoder-insertar');
+        contenedorDestino.appendChild(buscadorDirecciones.getContainer());
+
+        // 4. Mantenemos tu lógica de 'markgeocode'
+        buscadorDirecciones.on('markgeocode', function (e) {
             limpiarBusqueda();
             mapa.flyTo(e.geocode.center, 16, { animate: true, duration: 1.5 });
-            document.querySelector('.leaflet-control-geocoder-alternatives').innerHTML = '';
-            const marker = L.marker(e.geocode.center).addTo(mapa).bindPopup(`<b>Ubicación encontrada:</b><br>${e.geocode.name}`).openPopup();
+            const marker = L.marker(e.geocode.center).addTo(mapa)
+                .bindPopup(`<b>Ubicación:</b><br>${e.geocode.name}`).openPopup();
             mapa.once('click', () => mapa.removeLayer(marker));
-        }).addTo(mapa);
+        });
 
         capas.montes.bringToFront();
         mapa.on('overlayadd', () => capas.montes.bringToFront());
@@ -252,7 +298,7 @@ function ejecutarBusqueda() {
     let valorBusqueda = valorInput.includes('|') ? valorInput.split('|')[0].trim().toLowerCase() : valorInput;
     const listaHTML = document.getElementById('lista-resultados');
     const panel = document.getElementById('resultados-busqueda');
-    listaHTML.innerHTML = ""; 
+    listaHTML.innerHTML = "";
 
     let encontradoAlgunaCosa = false;
 
@@ -260,7 +306,7 @@ function ejecutarBusqueda() {
         const matchObra = o.nombre.toLowerCase().includes(valorBusqueda) || o.id_obra.toLowerCase().includes(valorBusqueda);
         const matchEmpresa = o.empresa && o.empresa.toLowerCase().includes(valorBusqueda);
         const matchDirector = o.Dir_obra && o.Dir_obra.toLowerCase().includes(valorBusqueda);
-        
+
         if (filtroTipo === 'obra') return matchObra;
         if (filtroTipo === 'empresa') return matchEmpresa;
         if (filtroTipo === 'director') return matchDirector;
@@ -304,37 +350,37 @@ function ejecutarBusqueda() {
     else { alert("No se hallaron resultados."); panel.style.display = "none"; }
 }
 
-window.seleccionarObraCompleta = function(idObra) {
+window.seleccionarObraCompleta = function (idObra) {
     let bounds = L.latLngBounds();
     let encontradoEnMapa = false;
 
     capas.montes.eachLayer(layer => {
         const listaIdsObras = (layer.feature.properties.lista_obras || "").split(',').map(s => s.trim());
         if (listaIdsObras.includes(idObra)) {
-            layer.setStyle(estiloFiltro); 
+            layer.setStyle(estiloFiltro);
             bounds.extend(layer.getBounds());
             encontradoEnMapa = true;
         } else {
-            layer.setStyle({ opacity: 0.1, fillOpacity: 0.05 }); 
+            layer.setStyle({ opacity: 0.1, fillOpacity: 0.05 });
         }
     });
 
     if (encontradoEnMapa) mapa.fitBounds(bounds, { padding: [50, 50], duration: 1.5 });
-    abrirObraEnSidebar(idObra); 
+    abrirObraEnSidebar(idObra);
 }
 
-window.cerrarResultados = function() {
+window.cerrarResultados = function () {
     document.getElementById('resultados-busqueda').style.display = 'none';
 }
 
-window.limpiarBusqueda = function() {
+window.limpiarBusqueda = function () {
     capas.montes.setStyle(estiloNormal);
     capas.perimetros.setStyle(estiloPerimetros);
     document.getElementById('input-busqueda').value = "";
     const panel = document.getElementById('resultados-busqueda');
     if (panel) panel.style.display = "none";
     cerrarSidebar();
-    capas.perimetros.bringToBack(); 
+    capas.perimetros.bringToBack();
     mapa.closePopup();
 
     const boundsIncendios = capas.perimetros.getBounds();
@@ -380,8 +426,8 @@ mapa.on('overlayremove', e => {
 const capaMinimapa = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { minZoom: 5, maxZoom: 6 });
 new L.Control.MiniMap(capaMinimapa, {
     toggleDisplay: true, minimized: false, position: 'bottomleft', width: 150, height: 150,
-    aimingRectOptions: {color: "#ff7800", weight: 1, interactive: false},
-    shadowRectOptions: {color: "#000000", weight: 1, interactive: false, opacity: 0, fillOpacity: 0}
+    aimingRectOptions: { color: "#ff7800", weight: 1, interactive: false },
+    shadowRectOptions: { color: "#000000", weight: 1, interactive: false, opacity: 0, fillOpacity: 0 }
 }).addTo(mapa);
 
 cargarVisorLocal();
