@@ -17,29 +17,51 @@ body, html {
     padding: 12px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    
-    /* CAMBIO: Ahora los elementos se apilan en columna */
     display: flex;
     flex-direction: column; 
     gap: 10px;
-    width: 300px; /* Ancho fijo para que sea estético */
+    width: 320px; /* Ancho fijo para que sea estético */
+    box-sizing: border-box;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Ajustamos el buscador de direcciones para que ocupe todo el ancho del contenedor */
+/* Clase para minimizar el buscador */
+#buscador-container.minimizada {
+    transform: translateX(calc(-100% - 10px)); 
+}
+
+#tipo-busqueda, #input-busqueda {
+    width: 100% !important;
+    box-sizing: border-box;
+    height: 38px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Botones de acción */
+#btn-buscar, #btn-limpiar {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    color: white;
+}
+#btn-buscar { background: #2c3e50; }
+#btn-limpiar { background: #95a5a6; }
+
+/* Integración del Geocoder dentro del contenedor */
 #geocoder-insertar .leaflet-control-geocoder {
     width: 100% !important;
-    margin: 0 !important;
-    box-shadow: none !important; /* Quitamos la sombra porque ya la tiene el padre */
-    border-top: 1px solid #eee; /* Una línea sutil de separación */
+    margin: 10px 0 0 0 !important;
+    box-shadow: none !important;
+    border-top: 1px solid #eee;
     padding-top: 10px;
 }
 
-#geocoder-insertar .leaflet-control-geocoder-form input {
-    width: 100% !important;
-    background: #f9f9f9 !important;
-    border: 1px solid #ddd !important;
-    border-radius: 4px !important;
-}
 
 /* Resultados del geocoder: que floten sobre el mapa pero alineados al buscador */
 .leaflet-control-geocoder-alternatives {
@@ -47,44 +69,6 @@ body, html {
     border-radius: 0 0 8px 8px !important;
 }
 
-/* --- ADAPTACIÓN PARA MÓVILES (Media Query) --- */
-@media (max-width: 768px) {
-    #buscador-container {
-        left: 10px;
-        top: 10px;
-        display: flex;
-        flex-direction: column; /* Apilamos select e input */
-        max-width: 320px; /* Reducimos ancho para dejar libre la derecha */
-        gap: 10px;
-        padding: 6px;
-        box-sizing: border-box; /* Fundamental para que el padding no sume al ancho */
-    }
-
-    #tipo-busqueda, 
-    #input-busqueda {
-    width: 100% !important; /* Fuerza a ocupar el ancho del contenedor */
-    box-sizing: border-box; /* El padding se queda DENTRO del 100% */
-    margin: 0; 
-    height: 38px;
-}
-
-    /* Ocultamos los textos de los botones para ahorrar espacio */
-    #btn-buscar, #btn-limpiar {
-        padding: 8px;
-        font-size: 12px;
-    }
-
-    /* El sidebar en móvil cubrirá el mapa, no lo desplazará */
-    body.sidebar-abierto #map {
-        margin-right: 0 !important;
-        width: 100% !important;
-    }
-    
-    .sidebar {
-        max-width: 100%;
-        width: 0;
-    }
-}
 
 #controles {
     position: absolute;
@@ -171,9 +155,10 @@ summary:hover {
 /* ESTILO PANEL RESULTADOS BÚSQUEDA*/
 .panel-resultados {
     position: absolute;
-    top: 70px;
-    left: 50px;
-    width: 300px;
+    top: 100%;
+    left: 0px;
+    margin-top: 10px; /* Un pequeño respiro */
+    width: 100%; /* Mismo ancho que el buscador */
     max-height: 400px;
     background: white;
     z-index: 1001;
@@ -212,7 +197,6 @@ summary:hover {
     overflow: hidden; /* Evita scroll doble en el padre */
     transition: 0.5s; /* Efecto de deslizamiento */
 }
-
 
 /* El contenedor del contenido (DONDE OCURRE EL SCROLL) */
 #sidebar-content {
@@ -331,3 +315,21 @@ button#btn-limpiar { background: #95a5a6; }
 
 .popup-header { background: #2c3e50; color: white; padding: 8px; margin: -10px -5px 10px -10px; font-weight: bold; }
 .obra-item { background: #f9f9f9; border-left: 4px solid #27ae60; padding: 8px; margin-top: 5px; font-size: 0.9em; }
+
+/* --- 6. ADAPTACIÓN MÓVIL --- */
+@media (max-width: 768px) {
+    #buscador-container {
+        width: 260px;
+        left: 10px;
+        top: 10px;
+    }
+
+    body.sidebar-abierto #map {
+        margin-right: 0 !important;
+        width: 100% !important;
+    }
+
+    .sidebar {
+        max-width: 100%;
+    }
+}

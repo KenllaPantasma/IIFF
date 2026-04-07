@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -9,47 +10,61 @@
     <link rel="icon" type="image/x-icon" href="img/fuego-fatuo.ico">
 
     <!--añadir minimapa-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.css" />
 
     <!-- Añadir plugin para hacer busquedas de direcciones con google maps-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-    
+
 
 </head>
+
 <body>
     <!-- controles de búsqueda-->
     <div id="buscador-container">
-        <select id="tipo-busqueda">
-            <option value="todo">🔍 Todo</option>
-            <option value="obra">📂 Obra (ID/Nombre)</option>
-            <option value="empresa">🏢 Empresa</option>
-            <option value="director">👷 Director de Obra</option>
-            <option value="incendio">🔥 Incendio</option>
-        </select>
-        <input type="text" id="input-busqueda" list="opciones-obras" placeholder="Escribe ID o nombre de obra...">
-        <datalist id="opciones-obras"></datalist>
-        <button id="btn-buscar">🔍 Buscar</button>
-        <button id="btn-limpiar">✖ Limpiar</button>
-        <div id="geocoder-insertar"></div>
+        <button id="toggle-buscador" title="Minimizar/Maximizar"
+            style="position: absolute; right: -40px; top: 0; width: 35px; height: 35px; background: rgb(0, 0, 0); border: none; border-radius: 0 8px 8px 0; cursor: pointer; box-shadow: 4px 0 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 18px;">
+            ❮
+        </button>
+
+        <div id="contenido-buscador">
+            <select id="tipo-busqueda">
+                <option value="todo">🔍 Todo</option>
+                <option value="obra">📂 Obra (ID/Nombre)</option>
+                <option value="empresa">🏢 Empresa</option>
+                <option value="director">👷 Director de Obra</option>
+                <option value="incendio">🔥 Incendio</option>
+            </select>
+
+            <input type="text" id="input-busqueda" list="opciones-obras" placeholder="Escribe ID o nombre de obra...">
+            <datalist id="opciones-obras"></datalist>
+
+            <button id="btn-buscar">🔍 Buscar</button>
+            <button id="btn-limpiar">✖ Limpiar</button>
+
+            <div id="geocoder-insertar"></div>
+
+            <!-- Contenedor resultados búsqueda-->
+            <div id="resultados-busqueda" class="panel-resultados" style="display:none;">
+                <div class="header-resultados">
+                    <span>Resultados encontrados</span>
+                    <button onclick="cerrarResultados()">×</button>
+                </div>
+                <div id="lista-resultados"></div>
+            </div>
+        </div>
     </div>
-    
+
     <div id="map"></div>
 
-    <!-- Contenedor resultados búsqueda-->
-    <div id="resultados-busqueda" class="panel-resultados" style="display:none;">
-        <div class="header-resultados">
-            <span>Resultados encontrados</span>
-            <button onclick="cerrarResultados()">×</button>
-        </div>
-        <div id="lista-resultados"></div>
-    </div>
-    
+
+
     <!--contenedor panel lateral con información-->
     <div id="sidebar" class="sidebar">
-        <button class="close-btn" onclick="cerrarSidebar()" >
+        <button class="close-btn" onclick="cerrarSidebar()">
             &times; Cerrar detalles técnicos
         </button>
-        
+
         <div id="sidebar-content"></div>
     </div>
 
@@ -57,10 +72,12 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <!-- script del Geocoder para buscar como en google maps -->
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script> <!--añadir minimapa-->
-    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script>
+    <!--añadir minimapa-->
+
     <script src="script.js"></script>
 </body>
+
 </html>

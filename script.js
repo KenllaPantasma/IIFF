@@ -82,6 +82,14 @@ window.abrirObraEnSidebar = function (id) {
 
     const sidebar = document.getElementById("sidebar");
     const content = document.getElementById('sidebar-content');
+    const buscador = document.getElementById('buscador-container');
+    const btnToggle = document.getElementById('toggle-buscador');
+
+    // Minimizar el buscador automáticamente al abrir una obra
+    if (buscador) {
+        buscador.classList.add('minimizada');
+        if (btnToggle) btnToggle.innerText = '❯'; // Cambia la flecha a "abrir"
+    }
 
     // Vamos a añadir la lógica para que en PC el mapa se desplace (clase sidebar-abierto) y en móvil no.
     const esMovil = window.innerWidth <= 768;
@@ -429,5 +437,17 @@ new L.Control.MiniMap(capaMinimapa, {
     aimingRectOptions: { color: "#ff7800", weight: 1, interactive: false },
     shadowRectOptions: { color: "#000000", weight: 1, interactive: false, opacity: 0, fillOpacity: 0 }
 }).addTo(mapa);
+
+// --- LÓGICA PARA MINIMIZAR EL BUSCADOR ---
+const btnToggle = document.getElementById('toggle-buscador');
+const buscador = document.getElementById('buscador-container');
+
+if (btnToggle) {
+    btnToggle.addEventListener('click', () => {
+        buscador.classList.toggle('minimizada');
+        // Cambia la flecha según el estado
+        btnToggle.innerText = buscador.classList.contains('minimizada') ? '❯' : '❮';
+    });
+}
 
 cargarVisorLocal();
