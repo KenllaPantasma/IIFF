@@ -322,6 +322,14 @@ button#btn-limpiar { background: #95a5a6; }
     border-top: 1px solid #eee;
 }
 
+.leaflet-bar button {
+    transition: background-color 0.2s;
+}
+
+.leaflet-bar button:hover {
+    background-color: #f4f4f4 !important;
+}
+
 /* --- 6. ADAPTACIÓN MÓVIL --- */
 @media (max-width: 768px) {
     #buscador-container {

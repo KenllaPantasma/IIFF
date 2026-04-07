@@ -453,4 +453,46 @@ if (btnToggle) {
     });
 }
 
+// --- CONTROL DE GEOLOCALIZACIÓN ---
+const botonGPS = L.control({ position: 'topright' });
+
+botonGPS.onAdd = function (map) {
+    const div = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+    div.innerHTML = `
+        <button title="Mi ubicación actual" 
+                style="background-color: #ffffff; border: none; width: 34px; height: 34px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; border-radius: 2px;">
+            📍
+        </button>`;
+    
+    div.onclick = function () {
+        mapa.locate({ setView: true, maxZoom: 16 });
+    };
+    return div;
+};
+
+botonGPS.addTo(mapa);
+
+// Manejar el evento cuando se encuentra la ubicación
+mapa.on('locationfound', function(e) {
+    // Borrar marcador anterior si existe
+    if (window.miMarcadorGPS) {
+        mapa.removeLayer(window.miMarcadorGPS);
+    }
+    
+    // Crear un círculo azul estilo GPS
+    window.miMarcadorGPS = L.circleMarker(e.latlng, {
+        radius: 8,
+        fillColor: "#3388ff",
+        color: "#fff",
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+    }).addTo(mapa).bindPopup("Estás aquí").openPopup();
+});
+
+// Manejar error si el usuario deniega el permiso
+mapa.on('locationerror', function(e) {
+    alert("No se pudo acceder a tu ubicación: " + e.message);
+});
+
 cargarVisorLocal();
