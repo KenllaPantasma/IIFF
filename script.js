@@ -177,21 +177,6 @@ function actualizarSugerencias() {
     });
 }
 
-// --- BOTÓN INTELIGENTE COPERNICUS ---
-const botonCopernicus = L.control({ position: 'topright' });
-botonCopernicus.onAdd = function (map) {
-    const div = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
-    div.innerHTML = `<button title="Ver esta zona en Copernicus (Sentinel-2)" style="background-color: #ffffff; border: none; width: 34px; height: 34px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; border-radius: 2px;">🛰️</button>`;
-    div.onclick = function () {
-        const centro = mapa.getCenter();
-        const urlLimpia = `https://browser.dataspace.copernicus.eu/?zoom=${mapa.getZoom()}&lat=${centro.lat.toFixed(5)}&lng=${centro.lng.toFixed(5)}`;
-        window.open(urlLimpia, '_blank');
-    };
-    return div;
-};
-botonCopernicus.addTo(mapa);
-
-
 // --- 6. CARGA PRINCIPAL (FETCH SERVIDOR) ---
 async function cargarVisorLocal() {
     try {
@@ -240,7 +225,9 @@ async function cargarVisorLocal() {
             "🌲 Montes y Obras": capas.montes,
             "🔥 Perímetros": capas.perimetros,
             "🦋 Red Natura": capas.rn2000,
-            "🍂 Uso Forestal": capas.usoForestal
+            "🍂 Uso Forestal": capas.usoForestal,
+            "<hr>": L.layerGroup([]), // Una línea separadora
+            "<span style='color: #005cbb; font-weight: bold;'>🛰️ Abrir Copernicus</span>": L.layerGroup([])
         };
 
         // --- Control de capas adaptativo ---
@@ -250,6 +237,22 @@ async function cargarVisorLocal() {
             position: esPantallaPequena ? 'bottomright' : 'topright', // Se va abajo en móviles
             collapsed: true
         }).addTo(mapa);
+
+        // --- Lógica para abrir Copernicus desde el selector de capas ---
+        mapa.on('overlayadd', function (e) {
+            if (e.name.includes('Copernicus')) {
+                const centro = mapa.getCenter();
+                const zoom = mapa.getZoom();
+                const url = `https://browser.dataspace.copernicus.eu/?zoom=${zoom}&lat=${centro.lat.toFixed(5)}&lng=${centro.lng.toFixed(5)}`;
+
+                window.open(url, '_blank');
+
+                // Quitamos el "check" inmediatamente para que no parezca una capa activa
+                setTimeout(() => {
+                    mapa.removeLayer(e.layer);
+                }, 100);
+            }
+        });
 
         // Si es móvil, también movemos el botón de Zoom al lado contrario (abajo izquierda)
         if (esPantallaPequena) {
