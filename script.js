@@ -130,34 +130,7 @@ window.abrirObraEnSidebar = function (id) {
     // LLAMAMOS AL FILTRADO DE MONTES
     // Usamos el ID de la obra para buscar qué montes lo contienen en su "lista_obras"
     if (capas.montes) {
-        const listaUL = document.getElementById('lista-montes-sidebar');
-
-        capas.montes.eachLayer(function (layer) {
-            const props = layer.feature.properties; // Simplificamos el acceso a las propiedades
-            const listaObrasDelMonte = props.lista_obras || "";
-
-            // Comprobamos si el ID de la obra actual está en la lista del monte
-            if (listaObrasDelMonte.split(',').map(s => s.trim()).includes(id)) {
-                const li = document.createElement('li');
-                li.style.cssText = "padding: 10px; border: 1px solid #eee; margin-bottom: 5px; border-radius: 4px; cursor: pointer; background: #f9f9f9;";
-                // Añadimos el campo TIPO con un estilo resaltado
-                li.innerHTML = `
-                    <div style="font-weight: bold; color: #2c3e50;">${props.nombre_monte}</div>
-                    <div style="font-size: 0.85em; color: #7f8c8d; margin-top: 4px;">
-                        <span style="background: #e8f5e9; color: #2e7d32; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.8em; margin-right: 5px;">
-                            ${props.TIPO || 'N/A'}
-                        </span>
-                        ID: ${props.id_monte}
-                    </div>
-                `;
-
-                li.onclick = () => {
-                    mapa.fitBounds(layer.getBounds(), { padding: [30, 30] });
-                    layer.openPopup();
-                };
-                listaUL.appendChild(li);
-            }
-        });
+        actualizarListaMontes(capas.montes, id);
     }
 }
 
@@ -536,7 +509,7 @@ mapa.on('locationerror', function (e) {
     alert("No se pudo acceder a tu ubicación: " + e.message);
 });
 
-function actualizarListaMontes(capaGeoJSON) {
+function actualizarListaMontes(capaGeoJSON, idFiltro = null) {
     const listaUL = document.getElementById('lista-montes-sidebar');
     if (!listaUL) return;
 
@@ -544,6 +517,13 @@ function actualizarListaMontes(capaGeoJSON) {
 
     capaGeoJSON.eachLayer(function (layer) {
         const props = layer.feature.properties;
+
+        // --- FILTRO LÓGICO ---
+        if (idFiltro) {
+            const obrasDelMonte = (props.lista_obras || "").split(',').map(s => s.trim());
+            if (!obrasDelMonte.includes(idFiltro)) return; // Si no coincide con la obra, saltar
+        }
+
         const li = document.createElement('li');
 
         // Estilizamos el elemento de la lista
@@ -568,8 +548,12 @@ function actualizarListaMontes(capaGeoJSON) {
             mapa.fitBounds(layer.getBounds(), { padding: [30, 30], maxZoom: 16 });
             layer.openPopup();
 
+            console.log("He hecho clic");
+
             // Si estás en móvil, podrías querer cerrar el sidebar aquí
-            // if (window.innerWidth < 768) cerrarSidebar(); 
+            if (window.innerWidth <= 768) {
+                cerrarSidebar(); 
+            }
         };
 
         listaUL.appendChild(li);
